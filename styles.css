@@ -64,6 +64,10 @@ body {
     margin-right: 200px;
 }
 
+.hero-img {
+    align-items: center;
+}
+
 .highlight-yellow {
     color: #FEC952;
 }
