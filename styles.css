@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.nav-icons img {
+    height: 25px;
+    margin-left: 15px;
+}
+
+/* Primera sección: Hero */
+.hero {
+    padding-left: 58px;
+    text-align: left;
+    background-color: white;
+}
+
+.hero-content h1 {
+    font-size: 86px;
+    line-height: 1.2;
+    padding-top: 40px;
+    margin-right: 500px;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-family:'M PLUS 1p';
+    font-size: 30px;
+    padding-top: 35px;
+    padding-bottom: 40px;
+    margin-right: 200px;
+}
+
+.highlight-yellow {
+    color: #FEC952;
+}
+
+.highlight-cyan {
+    color: #67D3D3;
+}
+
+.highlight-grey {
+    color: #8CA5B3;
+}
+
+.highlight-purple {
+    color: #A064C2;
+}
+
+/* Segunda sección: Productos */
+.products {
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.card {
+    text-align: center;
+    padding: 20px;
+    flex: 1;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0; 
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    font-size: 48px;
+    color: white;
+}
+
+.card button {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Pie de página */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    background-color: #333;
+    color: white;
+}
+
+.footer-links a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.footer-links a:last-child {
+    margin-right: 0;
+}
+
+.footer-copyright {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.footer-icons img {
+    height: 20px;
+    margin-left: 15px;
+}
