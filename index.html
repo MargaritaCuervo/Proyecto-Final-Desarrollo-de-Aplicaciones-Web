@@ -6,16 +6,18 @@
     <title>Crypton Wireframe</title>
     <link rel="stylesheet" href="styles.css">
     <link href='https://fonts.googleapis.com/css?family=M PLUS 1p' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
     <!-- Barra de navegación -->
     <header>
-        <nav class="navbar">
-            <img src="/imgs/crypton.png" alt="Crypton Logo" class="logo">
+        <nav class="navbar fixed-top">
+            <img src="imgs/crypton.png" alt="Crypton Logo" class="logo">
             <ul class="nav-links">
-                <li><a href="#">PRODUCTOS</a></li>
-                <li><a href="#">NOSOTROS</a></li>
-                <li><a href="#">SOPORTE</a></li>
+                <li><a href="productos.html">PRODUCTOS</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+                <li><a href="soporte.html">SOPORTE</a></li>
             </ul>
             <div class="nav-icons">
                 <a href="#"><img src="user-icon.png" alt="User"></a>
@@ -26,6 +28,9 @@
 
     <!-- Primera Sección -->
     <section class="hero">
+        <div class>
+            <img scr="imgs/img_inicio.png" alt="foto de inicio de la página">
+        </div>
         <div class="hero-content">
             <h1>To all <span class="highlight-yellow">creators</span> who <span class="highlight-cyan">inspire</span> the <span class="highlight-grey">world</span> with their <span class="highlight-purple">music</span></h1>
             <p>Añade letras y melodías vocales a tus creaciones musicales. Nuestra tecnología te permite crear canciones a partir de voces sintetizadas, utilizando nuestros personajes virtuales para dar vida a tus ideas.</p>
@@ -35,23 +40,23 @@
     <section class="products">
         <div class="card-container">
             <div class="card" style="background-color: #FEC952;">
-                <h2>VOCALOID</h2>
-                <img src="/imgs/rinlen.png" alt="Vocaloid">
+                <h3>VOCALOID</h3>
+                <img src="imgs/rinlen.png" alt="Vocaloid">
                 <button>IR</button>
             </div>
             <div class="card" style="background-color: #67D3D3;">
-                <h2>FUENTES DE SONIDO</h2>
-                <img src="/imgs/miku.webp" alt="Fuentes de Sonido">
+                <h3>FUENTES DE SONIDO</h3>
+                <img src="imgs/miku.webp" alt="Fuentes de Sonido">
                 <button>IR</button>
             </div>
             <div class="card" style="background-color: #8CA5B3;">
                 <img src="imagen4.png" alt="CD de Muestra">
-                <h2>CD DE MUESTRA</h2>
+                <h3>CD DE MUESTRA</h3>
                 <button>IR</button>
             </div>
             <div class="card" style="background-color: #B14C3A;">
                 <img src="imagen5.png" alt="Bibliotecas de Efectos Especiales">
-                <h2>BIBLIOTECAS DE EFECTOS ESPECIALES</h2>
+                <h3>BIBLIOTECAS DE EFECTOS ESPECIALES</h3>
                 <button>IR</button>
             </div>
         </div>
