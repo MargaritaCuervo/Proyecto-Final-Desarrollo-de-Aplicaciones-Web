@@ -57,7 +57,7 @@ body {
 }
 
 .hero-content p {
-    font-family:'M PLUS 1p';
+    font-family: 'M PLUS 1p';
     font-size: 30px;
     padding-top: 35px;
     padding-bottom: 40px;
@@ -97,33 +97,63 @@ body {
 }
 
 .card {
+    position: relative; /* Permite posicionar elementos dentro de la tarjeta */
     text-align: center;
     padding: 20px;
     flex: 1;
     margin: 0;
     box-shadow: none;
-    border-radius: 0; 
+    overflow: hidden; /* Recorta el contenido que se sale de los bordes */
 }
 
 .card img {
-    width: 100%;
-    height: auto;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 2; /* Coloca la imagen encima del fondo */
+}
+
+.card-rinlen {
+    padding-top: 70px;
+    align-items: center;
+}
+
+.card-miku {
+    padding-top: 82px;
+    align-items: center;
+}
+
+.card-kaito {
+    padding-top: 70px;
+    align-items: center;
+}
+
+.card-meiko {
+    padding-top: 70px;
+    align-items: center;
 }
 
 .card h3 {
-    margin-bottom: 20px;
-    font-size: 48px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
     color: white;
+    z-index: 1; /* Coloca el texto al fondo */
 }
 
-.card button {
+.card-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 10px 20px;
     background-color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    z-index: 3; /* Coloca el botón encima de la imagen y el texto */
 }
 
 /* Pie de página */
