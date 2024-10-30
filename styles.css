@@ -104,6 +104,7 @@ body {
     margin: 0;
     box-shadow: none;
     overflow: hidden; /* Recorta el contenido que se sale de los bordes */
+    border-radius: 0 !important;
 }
 
 .card img {
@@ -157,34 +158,32 @@ body {
 }
 
 /* Pie de página */
-.footer-links {
-    display: flex;
+/*footer*/
+.footer-container {
     justify-content: center;
-    padding-top: 60px;
-    background-color: #333;
-    color: white;
+    gap: 20px; /* Espacio entre los enlaces */
+    width: 100%; 
 }
 
-.footer-links a {
-    color: white;
-    margin-right: 20px;
+.footer p {
+    margin: 0; 
+    padding: 10px 0; 
+}
+
+.foot-link {
     text-decoration: none;
+    color: #ffffff;
+    padding: 10px 5px;
 }
 
-.footer-links a:last-child {
-    margin-right: 0;
-}
-
-.footer-copyright {
-    display: flex;
-    justify-content: space-between;
+.container-2 {
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
+    gap: 20px;
+    padding: 20px 0;
+    min-width: fit-content;
 }
 
-.footer-icons img {
-    height: 20px;
-    margin-left: 15px;
+.logo {
+    vertical-align: middle;
 }
