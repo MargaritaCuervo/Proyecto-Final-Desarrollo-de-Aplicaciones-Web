@@ -307,7 +307,18 @@ body {
     height: 115%;
     background-color: #E3B6D4;
     z-index: 1;
-    margin-top: -90px; /* Ajusta la posición del rectángulo */
+    margin-top: -90px; 
+}
+
+.rectangle-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 110%;
+    background-color: #67D3D3;
+    z-index: 1;
+    margin-top: -50px;
 }
 
 /* Imagen sobre el rectángulo */
@@ -332,12 +343,12 @@ body {
 
 .product-text-2 h1 {
     display: inline-flex;
-    align-items: center; /* Alinea verticalmente el logo y el texto */
+    align-items: center; 
     font-size: 48px;
     font-weight: bold;
-    padding-left: 0; /* Ajusta el padding según sea necesario */
-    gap: 40px; /* Espacio entre el texto y el logo */
-    margin: 0; /* Quita el margen extra del h1 */
+    padding-left: 0; 
+    gap: 40px; 
+    margin: 0; 
 }
 
 .product-text-2 img {
@@ -399,12 +410,29 @@ body {
     background-color: #E3B6D4;
 }
 
+.buy-button-miku {
+    padding: 10px 20px;
+    background-color: #67D3D3;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    align-items: end;
+}
+
+.buy-button:hover-miku {
+    background-color: #67D3D3;
+}
+
 
 /* Pie de página */
 /*footer*/
 .footer-container {
     justify-content: center;
-    gap: 20px; /* Espacio entre los enlaces */
+    gap: 20px; 
     width: 100%; 
 }
 
