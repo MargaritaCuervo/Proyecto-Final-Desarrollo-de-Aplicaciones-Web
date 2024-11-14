@@ -186,7 +186,7 @@ body {
     z-index: 3; /* Coloca el botón encima de la imagen y el texto */
 }
 
-/* Sección de imágenes de la pagina "nosotros"*/
+/*pagina "nosotros"*/
 .secttions {
     position: relative;
     text-align: center;
@@ -253,6 +253,152 @@ body {
     padding-left: 2%;
     padding-right: 2%;
 }
+
+/*pagina vocaloid*/
+/* Estructura principal */
+.product-section {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    background-color: white;
+}
+
+.product-text {
+    position: relative;
+    padding-top: 70px;
+    flex: 1;
+    padding-right: 20px;
+    color: black;
+    font-family: 'M PLUS 1p';
+    z-index: 2;
+}
+
+/* Contenedor de la imagen y el rectángulo */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alínea el contenido a la derecha */
+    padding-right: 40px;
+    position: relative;
+}
+
+/* Rectángulos de fondo */
+.rectangle-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    background-color: #FEC952;
+    z-index: 1;
+}
+
+.rectangle-2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 115%;
+    background-color: #E3B6D4;
+    z-index: 1;
+    margin-top: -90px; /* Ajusta la posición del rectángulo */
+}
+
+/* Imagen sobre el rectángulo */
+.image-container img {
+    position: relative;
+    z-index: 2;
+}
+
+.image-container-2 img {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Estilos de texto */
+.product-text h1 {
+    z-index: 3;
+    padding-left: 50px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.product-text-2 h1 {
+    display: inline-flex;
+    align-items: center; /* Alinea verticalmente el logo y el texto */
+    font-size: 48px;
+    font-weight: bold;
+    padding-left: 0; /* Ajusta el padding según sea necesario */
+    gap: 40px; /* Espacio entre el texto y el logo */
+    margin: 0; /* Quita el margen extra del h1 */
+}
+
+.product-text-2 img {
+    padding-left: 30px;
+}
+.product-text p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.product-description {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+.highlight-price {
+    font-weight: bold;
+    color: #232323;
+}
+
+/* Botones de compra */
+.buy-button-rinlen {
+    padding: 10px 20px;
+    background-color: #FEC952;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    align-items: end;
+}
+
+.buy-button:hover-rinlen {
+    background-color: #FFC107;
+}
+
+.buy-button-luka {
+    padding: 10px 20px;
+    background-color: #E3B6D4;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    align-items: end;
+}
+
+.buy-button:hover-luka {
+    background-color: #E3B6D4;
+}
+
 
 /* Pie de página */
 /*footer*/
