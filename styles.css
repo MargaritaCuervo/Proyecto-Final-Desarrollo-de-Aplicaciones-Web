@@ -321,6 +321,39 @@ body {
     margin-top: -50px;
 }
 
+.rectangle-4 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 115%;
+    background-color: #525CA3;
+    z-index: 1;
+    margin-top: -90px; 
+}
+
+.rectangle-5 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 110%;
+    background-color: #B14C3A;
+    z-index: 1;
+    margin-top: -50px;
+}
+
+.rectangle-6 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 125%;
+    background-color: #F5AB52;
+    z-index: 1;
+    margin-top: -75px; 
+}
+
 /* Imagen sobre el rectángulo */
 .image-container img {
     position: relative;
@@ -427,6 +460,56 @@ body {
     background-color: #67D3D3;
 }
 
+.buy-button-kaito {
+    padding: 10px 20px;
+    background-color: #525CA3;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    align-items: end;
+}
+
+.buy-button:hover-kaito {
+    background-color: #525CA3;
+}
+
+.buy-button-meiko {
+    padding: 10px 20px;
+    background-color: #B14C3A;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    align-items: end;
+}
+
+.buy-button:hover-meiko {
+    background-color: #B14C3A;
+}
+
+.buy-button-superpack {
+    padding: 10px 20px;
+    background-color: #F5AB52;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    align-items: end;
+}
+
+.buy-button:hover-superpack {
+    background-color: #F5AB52;
+}
 
 /* Pie de página */
 /*footer*/
