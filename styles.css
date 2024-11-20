@@ -126,20 +126,20 @@ body {
 }
 
 .card {
-    position: relative; /* Permite posicionar elementos dentro de la tarjeta */
+    position: relative; 
     text-align: center;
     padding: 20px;
     flex: 1;
     margin: 0;
     box-shadow: none;
-    overflow: hidden; /* Recorta el contenido que se sale de los bordes */
+    overflow: hidden; 
     border-radius: 0 !important;
 }
 
 .card img {
     margin-bottom: 20px;
     position: relative;
-    z-index: 2; /* Coloca la imagen encima del fondo */
+    z-index: 2; 
 }
 
 .card-rinlen {
@@ -169,7 +169,7 @@ body {
     transform: translateX(-50%);
     font-size: 40px;
     color: white;
-    z-index: 1; /* Coloca el texto al fondo */
+    z-index: 1; 
 }
 
 .card-button {
@@ -183,7 +183,7 @@ body {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    z-index: 3; /* Coloca el botón encima de la imagen y el texto */
+    z-index: 3;
 }
 
 /*pagina "nosotros"*/
@@ -226,7 +226,7 @@ body {
     font-size: 30px;
     font-style: italic;
     max-width: 40%;
-    z-index: 4; /* Asegura que el texto esté encima del fondo y otras imágenes */
+    z-index: 4; 
 }
 
 .secttions-text-2 {
@@ -239,7 +239,7 @@ body {
     font-style: normal;
     text-align: left;
     max-width: 48%;
-    z-index: 4; /* Asegura que el texto esté encima del fondo y otras imágenes */
+    z-index: 4; 
 }
 
 .secttions-text-3 {
@@ -254,7 +254,7 @@ body {
     padding-right: 2%;
 }
 
-/*pagina vocaloid*/
+/*paginas vocaloid, cd muestreo*/
 /* Estructura principal */
 .product-section {
     padding-top: 70px;
@@ -283,9 +283,40 @@ body {
 .image-container-2 {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Alínea el contenido a la derecha */
+    align-items: flex-end; 
     padding-right: 40px;
     position: relative;
+}
+
+.image-container-2-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding-left: 150px; 
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+
+/* Imagen sobre el rectángulo */
+.image-container img {
+    position: relative;
+    z-index: 2;
+}
+
+.image-container-2 img {
+    position: relative;
+    z-index: 2;
+}
+
+.image-container-2-1 img {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding-left: 100px; 
+    position: relative;
+    width: 100%;
+    z-index: 2;
 }
 
 /* Rectángulos de fondo */
@@ -354,17 +385,38 @@ body {
     margin-top: -75px; 
 }
 
-/* Imagen sobre el rectángulo */
-.image-container img {
-    position: relative;
-    z-index: 2;
+.rectangle-7 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 110%;
+    background-color: #8CA5B3;
+    z-index: 1;
+    margin-top: -25px;
 }
 
-.image-container-2 img {
-    position: relative;
-    z-index: 2;
+.rectangle-7-2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 125%;
+    background-color: #8CA5B3;
+    z-index: 1;
+    margin-top: -75px; 
 }
 
+.rectangle-7-2-1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 115%;
+    background-color: #8CA5B3;
+    z-index: 1;
+    margin-top: -75px; 
+}
 
 /* Estilos de texto */
 .product-text h1 {
@@ -375,6 +427,7 @@ body {
 }
 
 .product-text-2 h1 {
+    z-index: 3;
     display: inline-flex;
     align-items: center; 
     font-size: 48px;
@@ -383,6 +436,18 @@ body {
     gap: 40px; 
     margin: 0; 
 }
+
+.product-text-2-1 h1 {
+    position: relative; 
+    left: 200px;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0; 
+    padding: 0; 
+    text-align: left; 
+    z-index: 3; 
+}
+
 
 .product-text-2 img {
     padding-left: 30px;
@@ -509,6 +574,23 @@ body {
 
 .buy-button:hover-superpack {
     background-color: #F5AB52;
+}
+
+.buy-button-cdmuestreo {
+    padding: 10px 20px;
+    background-color: #8CA5B3;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    align-items: end;
+}
+
+.buy-button:hover-cdmuestreo {
+    background-color: #8CA5B3;
 }
 
 /* Pie de página */
