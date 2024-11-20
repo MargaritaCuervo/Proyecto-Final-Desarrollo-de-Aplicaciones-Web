@@ -418,6 +418,17 @@ body {
     margin-top: -75px; 
 }
 
+.rectangle-7-2-2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 125%;
+    background-color: #B14C3A;
+    z-index: 1;
+    margin-top: -75px; 
+}
+
 /* Estilos de texto */
 .product-text h1 {
     z-index: 3;
