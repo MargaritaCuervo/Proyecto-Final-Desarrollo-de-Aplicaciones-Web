@@ -390,7 +390,18 @@ body {
     top: 0;
     left: 0;
     width: 35%;
-    height: 110%;
+    height: 125%;
+    background-color: #F5AB52;
+    z-index: 1;
+    margin-top: -50px;
+}
+
+.rectangle-6-2-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 125%;
     background-color: #F5AB52;
     z-index: 1;
     margin-top: -50px;
