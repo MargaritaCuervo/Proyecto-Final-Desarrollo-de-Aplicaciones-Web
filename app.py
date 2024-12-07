@@ -1,10 +1,22 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, session
+import hashlib
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
+mysql = MySQL(app)
+app.secret_key = '666'
+
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'crypton_db'
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    if 'username' in session:
+        return render_template('index.html',username=session['username'])
+    else:
+        return render_template("index.html")
 
 @app.route('/nosotros')
 def nosotros():
@@ -26,9 +38,30 @@ def cd_muestra():
 def bibliotecas():
     return render_template("bibliotecas.html")
 
-@app.route('/log_in')
+@app.route('/log_in',methods=['GET','POST'])
 def log_in():
-    return render_template("log_in.html")
+    if request.method=='POST':
+        username = request.form['username']
+        password = request.form['password']
+        hshpass = hashlib.sha256(password.encode()).hexdigest()
+        cursor = mysql.connection.cursor()
+        cursor.callproc('login',(username,hshpass))
+        result = cursor.fetchone()
+        cursor.close()
+        if result:
+            session['username'] = result[0]
+            return redirect(url_for('index'))
+        else:
+            cursor.close()
+            error = 'Usuario o contraseña incorrectos'
+            return render_template("log_in.html",error=error)
+    else:
+        return render_template("log_in.html")
+
+@app.route('/logout')
+def logoout():
+    session.pop('username',None)
+    return redirect(url_for('index'))
 
 @app.route('/sign_up')
 def sign_up():
