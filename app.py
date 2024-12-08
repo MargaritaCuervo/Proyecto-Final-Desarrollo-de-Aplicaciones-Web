@@ -8,8 +8,8 @@ app.secret_key = '666'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'crypton_db'
+app.config['MYSQL_PASSWORD'] = 'balls'
+app.config['MYSQL_DB'] = 'crypton'
 
 @app.route('/')
 def index():
@@ -48,7 +48,7 @@ def log_in():
         cursor.callproc('login',(username,hshpass))
         result = cursor.fetchone()
         cursor.close()
-        if result:
+        if result and result[0] == 'Login successful':
             session['username'] = result[0]
             return redirect(url_for('index'))
         else:
