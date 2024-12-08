@@ -79,13 +79,9 @@ def politica_uso():
 def contactanos():
     return render_template("contactanos.html")
 
-@app.route('/contactanos')
-def contactanos():
-    return render_template("contactanos.html")
-
-@app.route('/faqs_preguntas')
-def faqs_preguntas():
-    return render_template("faqs_preguntas.html")
+@app.route('/preguntas')
+def faqs():
+    return render_template("preguntas.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
