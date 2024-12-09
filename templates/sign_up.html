@@ -32,7 +32,7 @@
     
     <div class="registro-container">
         <h2>Registrate con nosotros</h2>
-        <form action="/registro" method="POST">
+        <form action="/sign_up" method="POST">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br><br>
 
@@ -48,11 +48,14 @@
             <label for="correo">Correo electrónico:</label>
             <input type="text" id="correo" name="correo" required><br><br>
     
-            <label for="contraseña">Contraseña Asignada:</label>
-            <input type="text" id="contraseña" name="contraseña" required><br><br>
+            <label for="password">Contraseña Asignada:</label>
+            <input type="text" id="password" name="password" required><br><br>
             
             <input type="submit" value="Sign Up">
         </form>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
     </div>
     
 </body>

@@ -8,8 +8,8 @@ app.secret_key = '666'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'balls'
-app.config['MYSQL_DB'] = 'crypton'
+app.config['MYSQL_PASSWORD'] = '120704'
+app.config['MYSQL_DB'] = 'Crypton'
 
 @app.route('/')
 def index():
@@ -63,9 +63,28 @@ def logoout():
     session.pop('username',None)
     return redirect(url_for('index'))
 
-@app.route('/sign_up')
+@app.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
-    return render_template("sign_up.html")
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        telefono = request.form['telefono']
+        usuario = request.form['user']
+        correo = request.form['correo']
+        password = request.form['password']
+        hshpass = hashlib.sha256(password.encode()).hexdigest()
+        cursor = mysql.connection.cursor()
+        cursor.callproc('signup', (nombre, apellido, correo, telefono, usuario, hshpass))
+        result = cursor.fetchone()
+        cursor.close()
+        if result and result[0] == 'Sign up successful':
+            return redirect(url_for('log_in'))
+        else:
+            error = 'Registro fallido: El usuario ya existe'
+            return render_template("sign_up.html", error=error)
+    else:
+        return render_template("sign_up.html")
+
 
 @app.route('/politica_privacidad')
 def politica_privacidad():
