@@ -358,5 +358,29 @@
      <!-- All Js -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
      <script src="js/script.js"></script>
+     <script>
+        const buttonClasses = ['buy-button-cdmuestreo'];
+    
+        buttonClasses.forEach(buttonClass => {
+            document.querySelectorAll(`.${buttonClass}`).forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product-id');
+                    fetch('/add_to_cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId: productId })
+                    }).then(response => {
+                        if (response.ok) {
+                            alert('Producto agregado al carrito.');
+                        } else {
+                            alert('Hubo un problema al agregar el producto al carrito.');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

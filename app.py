@@ -8,8 +8,8 @@ app.secret_key = '666'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '120704'
-app.config['MYSQL_DB'] = 'Crypton'
+app.config['MYSQL_PASSWORD'] = '123'
+app.config['MYSQL_DB'] = 'crypton'
 
 @app.route('/')
 def index():
@@ -43,10 +43,9 @@ def log_in():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        hshpass = hashlib.sha256(password.encode()).hexdigest()
         cursor = mysql.connection.cursor()
         try:
-            cursor.callproc('login', (username, hshpass))
+            cursor.callproc('login', (username, password))
             result = cursor.fetchone()
             cursor.close()
         except Exception as e:
@@ -77,10 +76,9 @@ def sign_up():
         usuario = request.form['user']
         correo = request.form['correo']
         password = request.form['password']
-        hshpass = hashlib.sha256(password.encode()).hexdigest()
         cursor = mysql.connection.cursor()
         try:
-            cursor.callproc('signup', (nombre, apellido, correo, telefono, usuario, hshpass))
+            cursor.callproc('signup', (nombre, apellido, correo, telefono, usuario, password))
             result = cursor.fetchone()
             cursor.close()
             mysql.connection.commit()
