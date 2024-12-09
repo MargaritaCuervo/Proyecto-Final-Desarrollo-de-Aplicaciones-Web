@@ -677,15 +677,15 @@ vocaloid, fuentes de sonido, cd de muestra y bibliotecas de efectos especiales*/
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
-    width: 100%; /* Ajusta el ancho según tus necesidades */
-    display: block; /* Para que se comporte como un bloque y ocupe todo el ancho del contenedor */
-    text-align: center; /* Asegura que el texto esté centrado */
+    width: 100%; 
+    display: block; 
+    text-align: center; 
 }
 
-/* Asegúrate de que el contenedor del botón esté centrado */
+
 .button-container {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
+    justify-content: center; 
 }
 
 
