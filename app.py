@@ -14,7 +14,7 @@ app.config['MYSQL_DB'] = 'Crypton'
 @app.route('/')
 def index():
     if 'username' in session:
-        return render_template('index.html',username=session['username'])
+        return render_template('index.html', username=session['username'])
     else:
         return render_template("index.html")
 
@@ -38,29 +38,34 @@ def cd_muestra():
 def bibliotecas():
     return render_template("bibliotecas.html")
 
-@app.route('/log_in',methods=['GET','POST'])
+@app.route('/log_in', methods=['GET', 'POST'])
 def log_in():
-    if request.method=='POST':
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         hshpass = hashlib.sha256(password.encode()).hexdigest()
         cursor = mysql.connection.cursor()
-        cursor.callproc('login',(username,hshpass))
-        result = cursor.fetchone()
-        cursor.close()
+        try:
+            cursor.callproc('login', (username, hshpass))
+            result = cursor.fetchone()
+            cursor.close()
+        except Exception as e:
+            cursor.close()
+            error = f'Error al iniciar sesión: {str(e)}'
+            return render_template("log_in.html", error=error)
+
         if result and result[0] == 'Login successful':
-            session['username'] = result[0]
+            session['username'] = username
             return redirect(url_for('index'))
         else:
-            cursor.close()
             error = 'Usuario o contraseña incorrectos'
-            return render_template("log_in.html",error=error)
+            return render_template("log_in.html", error=error)
     else:
         return render_template("log_in.html")
 
 @app.route('/logout')
 def logoout():
-    session.pop('username',None)
+    session.pop('username', None)
     return redirect(url_for('index'))
 
 @app.route('/sign_up', methods=['GET', 'POST'])
@@ -74,9 +79,16 @@ def sign_up():
         password = request.form['password']
         hshpass = hashlib.sha256(password.encode()).hexdigest()
         cursor = mysql.connection.cursor()
-        cursor.callproc('signup', (nombre, apellido, correo, telefono, usuario, hshpass))
-        result = cursor.fetchone()
-        cursor.close()
+        try:
+            cursor.callproc('signup', (nombre, apellido, correo, telefono, usuario, hshpass))
+            result = cursor.fetchone()
+            cursor.close()
+            mysql.connection.commit()
+        except Exception as e:
+            cursor.close()
+            error = f'Registro fallido: {str(e)}'
+            return render_template("sign_up.html", error=error)
+
         if result and result[0] == 'Sign up successful':
             return redirect(url_for('log_in'))
         else:
@@ -84,7 +96,6 @@ def sign_up():
             return render_template("sign_up.html", error=error)
     else:
         return render_template("sign_up.html")
-
 
 @app.route('/politica_privacidad')
 def politica_privacidad():
