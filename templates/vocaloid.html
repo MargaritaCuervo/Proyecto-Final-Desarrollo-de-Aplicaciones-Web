@@ -38,7 +38,11 @@
                 </li>
             </ul>
             <div class="nav-icons">
-                <a href="/log_in"><img src="static/imgs/usuario_icon.png" alt="User"></a>
+                {% if 'username' in session %}
+                    <a href="/logout"><img src="static/imgs/logout.png" alt="Logout"></a>
+                {% else %}
+                    <a href="/log_in"><img src="static/imgs/usuario_icon.png" alt="Login"></a>
+                {% endif %}
                 <a href="/carrito"><img src="static/imgs/carrito_icon.png" alt="Carrito"></a>
             </div>
         </nav>
