@@ -46,7 +46,7 @@ body {
     padding-right: 20px;
 }
 
-/* Pagina principal o de inicio, algunas secciones se usan para paginas subsecuentes*/
+/* Pagina principal o de inicio, algunas iones se usan para paginas subsecuentes*/
 /* Primera sección: Hero */
 .hero {
     padding-top: 70px;
@@ -254,6 +254,30 @@ body {
     max-width: 100%;
     padding-left: 2%;
     padding-right: 2%;
+}
+
+.secttions-text-4 {
+    position: relative;
+    color: black; 
+    font-family: 'M PLUS 1p';
+    font-size: 20px;
+    font-style: normal;
+    text-align: left;
+    max-width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-weight: bold;
+}
+
+.secttions-text-4 .side-text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    padding-left: 0.7%;
+    font-weight: bold;
+    color: #3CDFC8
 }
 
 /*paginas de todos los productos: 
