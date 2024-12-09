@@ -71,7 +71,7 @@
                         Rin/Len V4X (incl. INGLÉS) Versión paquete<br>
                         Precio web <span class="highlight-price">$2325.57 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-rinlen" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
+                    <button class="buy-button-rinlen" data-product-id="19" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
                 </div>
             </div>            
         </section>
@@ -99,7 +99,7 @@
                         Megurine Luka V4X Versión paquete<br>
                         Precio web <span class="highlight-price">$2325.57 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-luka" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
+                    <button class="buy-button-luka" data-product-id="20" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
                 </div>
                 <div class="product-text">
                     <div class="image-container-2">
@@ -144,7 +144,7 @@
                         Hatsune Miku V4X (incl. INGLÉS) Versión paquete<br>
                         Precio web <span class="highlight-price">$2325.57 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-miku" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
+                    <button class="buy-button-miku" data-product-id="21" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
                 </div>
             </div>            
         </section>
@@ -168,7 +168,7 @@
                         KAITO V3 Versión paquete<br>
                         Precio web <span class="highlight-price">$2325.57 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-kaito" style="font-weight: bold; color: white;"><img src="static/imgs/carrito_icon_white.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
+                    <button class="buy-button-kaito" data-product-id="22" style="font-weight: bold; color: white;"><img src="static/imgs/carrito_icon_white.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
                 </div>
                 <div class="product-text">
                     <div class="image-container-2">
@@ -211,7 +211,7 @@
                         MEIKO V3 Versión paquete<br>
                         Precio web <span class="highlight-price">$2325.57 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-meiko" style="font-weight: bold; color: white;"><img src="static/imgs/carrito_icon_white.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
+                    <button class="buy-button-meiko" data-product-id="23" style="font-weight: bold; color: white;"><img src="static/imgs/carrito_icon_white.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
                 </div>
             </div>            
         </section>
@@ -278,5 +278,31 @@
      <!-- All Js -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
      <script src="js/script.js"></script>
+     <script>
+        const buttonClasses = ['buy-button-rinlen', 'buy-button-luka', 'buy-button-miku', 'buy-button-kaito', 'buy-button-meiko', 'buy-button-superpack'];
+    
+        buttonClasses.forEach(buttonClass => {
+            document.querySelectorAll(`.${buttonClass}`).forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product-id');
+                    fetch('/add_to_cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId: productId })
+                    }).then(response => {
+                        if (response.ok) {
+                            alert('Producto agregado al carrito.');
+                        } else {
+                            alert('Hubo un problema al agregar el producto al carrito.');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    
+    
 </body>
 </html>

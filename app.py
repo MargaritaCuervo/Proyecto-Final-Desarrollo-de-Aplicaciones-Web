@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import hashlib
 from flask_mysqldb import MySQL
 
@@ -113,9 +113,88 @@ def contactanos():
 def faqs():
     return render_template("preguntas.html")
 
+
+@app.route('/add_to_cart', methods=['POST'])
+def add_to_cart():
+    if 'username' not in session:
+        return jsonify({'message': 'Debe iniciar sesión para agregar productos al carrito.'}), 401
+
+    data = request.get_json()
+    product_id = data['productId']
+    
+    cursor = mysql.connection.cursor()
+    try:
+        # Obtener el client_ID del usuario
+        cursor.execute('SELECT client_ID FROM ClientesLogins WHERE client_user = %s', [session['username']])
+        user_id = cursor.fetchone()[0]
+
+        # Verificar si el usuario ya tiene un pedido abierto
+        cursor.execute('SELECT order_id FROM Pedidos WHERE client_ID = %s AND order_total = 0', [user_id])
+        order = cursor.fetchone()
+
+        if not order:
+            # Crear un nuevo pedido si no existe uno abierto
+            cursor.execute('INSERT INTO Pedidos (client_ID, order_date, order_total) VALUES (%s, CURDATE(), 0)', [user_id])
+            mysql.connection.commit()
+            order_id = cursor.lastrowid
+        else:
+            order_id = order[0]
+
+        # Insertar el producto en DetallesPedidos
+        cursor.execute('INSERT INTO DetallesPedidos (product_ID, order_id) VALUES (%s, %s)', (product_id, order_id))
+        mysql.connection.commit()
+        cursor.close()
+
+        return jsonify({'message': 'Producto agregado al carrito.'})
+    except Exception as e:
+        print(f'Error: {e}')
+        cursor.close()
+        return jsonify({'message': 'Hubo un problema al agregar el producto al carrito.'}), 500
+
+
+
 @app.route('/carrito')
 def carrito():
-    return render_template("carrito.html")
+    if 'username' not in session:
+        return redirect(url_for('log_in'))
+
+    cursor = mysql.connection.cursor()
+    cursor.execute('''
+        SELECT p.product_name, p.product_price, d.detail_ID, d.product_ID
+        FROM Productos p
+        JOIN DetallesPedidos d ON p.product_ID = d.product_ID
+        JOIN Pedidos o ON d.order_id = o.order_id
+        JOIN ClientesLogins c ON o.client_ID = c.client_ID
+        WHERE c.client_user = %s
+    ''', [session['username']])
+
+    productos = cursor.fetchall()
+    cursor.execute('''
+        SELECT SUM(p.product_price) as total
+        FROM Productos p
+        JOIN DetallesPedidos d ON p.product_ID = d.product_ID
+        JOIN Pedidos o ON d.order_id = o.order_id
+        JOIN ClientesLogins c ON o.client_ID = c.client_ID
+        WHERE c.client_user = %s
+    ''', [session['username']])
+
+    total = cursor.fetchone()[0]
+    cursor.close()
+    
+    return render_template('carrito.html', products=productos, order_total=total)
+
+
+
+@app.route('/remove_from_cart/<int:detail_id>', methods=['POST'])
+def remove_from_cart(detail_id):
+    cursor = mysql.connection.cursor()
+    cursor.execute('DELETE FROM DetallesPedidos WHERE detail_ID = %s', [detail_id])
+    mysql.connection.commit()
+    cursor.close()
+    return redirect(url_for('carrito'))
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

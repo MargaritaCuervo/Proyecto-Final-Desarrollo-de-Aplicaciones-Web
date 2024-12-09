@@ -76,7 +76,7 @@
                         Hatsune Miku NT Versión paquete<br>
                         Precio web <span class="highlight-price">$2596.48 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-miku" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
+                    <button class="buy-button-miku" data-product-id="12"style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
                 </div>
             </div>            
         </section>
@@ -104,7 +104,7 @@
                         PISTA EZ BASS<br>
                         Precio web <span class="highlight-price">$2884.98 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-superpack" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
+                    <button class="buy-button-superpack" data-product-id="13" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
                 </div>
                 <div class="product-text">
                     <div class="image-container-2-1">
@@ -148,7 +148,7 @@
                         PISTA EZKEY MIDI 6PACK <br>
                         Precio web <span class="highlight-price">$1857.89 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-superpack" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
+                    <button class="buy-button-superpack" data-product-id="14" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
                 </div>
             </div>            
         </section>
@@ -180,7 +180,7 @@
                         SOFTWARE ACOU6TICS<br>
                         Precio web <span class="highlight-price">$7431.58 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-superpack" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
+                    <button class="buy-button-superpack" data-product-id="15" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
                 </div>
                 <div class="product-text">
                     <div class="image-container-2-1">
@@ -232,7 +232,7 @@
                         SOFTWARE ELECTRI6ITY <br>
                         Precio web <span class="highlight-price">$7431.58 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-superpack" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
+                    <button class="buy-button-superpack" data-product-id="16" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
                 </div>
             </div>            
         </section>
@@ -265,7 +265,7 @@
                         DVD-ROM GARRITAN INSTANT ORCHESTRA <br>
                         Precio web <span class="highlight-price">$2621.06 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-superpack" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
+                    <button class="buy-button-superpack" data-product-id="17" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%" class="product-text-2 img"> <span></span> COMPRAR</button>
                 </div>
                 <div class="product-text">
                     <div class="image-container-2-1">
@@ -313,7 +313,7 @@
                         PISTA SUPERIOR DRUMMER 3<br>
                         Precio web <span class="highlight-price">$6491.21 MXN</span> (impuestos incluidos)
                     </p>
-                    <button class="buy-button-miku" style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
+                    <button class="buy-button-miku" data-product-id="18"style="font-weight: bold;"><img src="static/imgs/carrito_icon.png" alt="Carrito" width="20%"> <span></span> COMPRAR</button>
                 </div>
             </div>            
         </section>
@@ -493,5 +493,32 @@
      <!-- All Js -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
      <script src="js/script.js"></script>
+
+
+     <script>
+        const buttonClasses = ['buy-button-superpack', 'buy-button-miku'];
+    
+        buttonClasses.forEach(buttonClass => {
+            document.querySelectorAll(`.${buttonClass}`).forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product-id');
+                    fetch('/add_to_cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId: productId })
+                    }).then(response => {
+                        if (response.ok) {
+                            alert('Producto agregado al carrito.');
+                        } else {
+                            alert('Hubo un problema al agregar el producto al carrito.');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>

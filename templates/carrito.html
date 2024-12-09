@@ -55,18 +55,19 @@
                 <!-- Iterar productos -->
                 {% for product in products %}
                 <div class="cart-item d-flex align-items-center">
-                    <img src="{{ url_for('static', filename=product_image) }}" alt="{{ product_name }}">
+                    
                     <div>
-                        <p><strong>{{ product_name }}</strong></p>
+                        <p><strong>{{ product[0] }}</strong></p>
                         <div class="d-flex align-items-center">
                             <button class="btn btn-outline-secondary btn-sm me-2">-</button>
-                            <input type="text" class="form-control form-control-sm text-center" value="{{ product_quantity }}">
+                            <input type="text" class="form-control form-control-sm text-center" value="1">
                             <button class="btn btn-outline-secondary btn-sm ms-2">+</button>
                         </div>
-                        <a href="{{ url_for('eliminar_producto', product_ID=product_ID) }}" class="btn-delete">Eliminar</a>
+                        <a href="{{ url_for('remove_from_cart', detail_id=product[2]) }}" class="btn-delete">Eliminar</a>
+
                     </div>
                     <div class="ms-auto">
-                        <p>{{ product_price }} MNX</p>
+                        <p>{{ product[1] }} MNX</p>
                     </div>
                 </div>
                 {% endfor %}
