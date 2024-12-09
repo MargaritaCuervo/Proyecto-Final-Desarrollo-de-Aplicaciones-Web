@@ -5,9 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosotros</title>
     <link rel="stylesheet" href="static/styles.css">
-    <link href='https://fonts.googleapis.com/css?family=M PLUS 1p' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+    
+        .pregunta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .pregunta:hover {
+            background-color: #f9f9f9;
+        }
+        .pregunta .q-icon {
+            color: #20f8ff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .pregunta .text {
+            flex: 1;
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .pregunta .expand-icon {
+            color: #20f8ff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /*clase btn btn-primary*/
+        .btn-primary {
+            color: #fff;
+            background-color: #20f8ff;
+            border-color: #20f8ff;
+        }
+        
+    </style>
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -47,46 +88,45 @@
     <main>
         <div class="content">
             <br>
-            <h1>Preguntas Frecuentes</h1>
+            <h1>Soporte Técnico</h1>
             <br><br><br>
         </div>
-        <section>
-            <div class="secttions">
-                <h2>¿Tienes problemas con alguno de nuestros productos?</h2>
-                </div>
-                <section>
-                    <div class="secttions">
-                        <p class="secttions-text-1">Puede encontrar su problema y algunas posibles soluciones en nuestras Preguntas frecuentes. Utilice la sección de Contáctanos para comunicarte directamente si no puede encontrar una solución a su problema. </p>
-                    </div>
-                </section>
+        <section class="container text-center">
+            <h2>¿Tienes problemas con alguno de nuestros productos?</h2>
+            <br><br>
+            <p>
+                Puede encontrar su problema y algunas posibles soluciones en nuestras Preguntas frecuentes. 
+                Utilice la sección de Contáctanos para comunicarse directamente si no puede encontrar una solución a su problema.
+            </p>
         </section>
-        <section>
-            <div class="secttions">
-                
-                <p class="secttions-text-4">
-                    <span class="side-text">Q</span>
-                    No se pueden instalar productos equipados con ENGINE 2 desde el disco de instalación/memoria USB</p>
+        <br><br>
+
+        <!-- Lista de preguntas -->
+        <section class="container">
+            <div class="pregunta">
+                <span class="q-icon">Q</span>
+                <span class="text">No se pueden instalar productos equipados con ENGINE 2 desde el disco de instalación/memoria USB</span>
+                <a href="https://ec.crypton.co.jp/support/faq/866" class="expand-icon">+</a>
             </div>
-        </section>
-        <section>
-            <div class="secttions">
-                <p class="secttions-text-4">
-                    <span class="side-text">Q</span>
-                    No encuentro el botón de descarga de Pulse Downloader.</p>
+            <div class="pregunta">
+                <span class="q-icon">Q</span>
+                <span class="text">No encuentro el botón de descarga de Pulse Downloader.</span>
+                <a href="https://ec.crypton.co.jp/support/faq/766" class="expand-icon">+</a>
             </div>
-        </section>
-        <section>
-            <div class="secttions">
-                <p class="secttions-text-4">
-                    <span class="side-text">Q</span>
-                    ¿Puedo utilizar sonidos de la biblioteca de efectos de sonido en mi sitio web?</p>
+            <div class="pregunta">
+                <span class="q-icon">Q</span>
+                <span class="text">Quiero confirmar el código de activación para el registro de eLicenser Control Center</span>
+                <a href="https://ec.crypton.co.jp/support/faq/751" class="expand-icon">+</a>
+            </div>
+            <div class="text-center">
+                <a href="https://ec.crypton.co.jp/support/faq" class="btn btn-primary">Ver más preguntas</a>
             </div>
         </section>
         
         <br><br><br>
 
-        <!-- Pie de página -->
-        <footer class="bg-dark text-white p-3">
+         <!-- Pie de página -->
+         <footer class="bg-dark text-white p-3">
             <div class="footer-container container-fluid d-flex" style="justify-content: space-between;">
                 <div class="d-flex container-2 text-left justify-content-center">
                     <p><a class="foot-link" href="/politica_privacidad">Política de privacidad</a></p>
@@ -111,6 +151,4 @@
     <!-- All Js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
-    
 </body>
-</html>

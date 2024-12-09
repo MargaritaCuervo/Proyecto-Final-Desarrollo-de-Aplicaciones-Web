@@ -46,6 +46,12 @@ body {
     padding-right: 20px;
 }
 
+.contact-icon {
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
 /* Pagina principal o de inicio, algunas iones se usan para paginas subsecuentes*/
 /* Primera sección: Hero */
 .hero {
@@ -258,9 +264,8 @@ body {
 
 .secttions-text-4 {
     position: relative;
-    color: black; 
+    color: black;
     font-family: 'M PLUS 1p';
-    font-size: 20px;
     font-style: normal;
     text-align: left;
     max-width: 100%;
@@ -269,16 +274,45 @@ body {
     font-weight: bold;
 }
 
-.secttions-text-4 .side-text {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 25px;
-    padding-left: 0.7%;
-    font-weight: bold;
-    color: #3CDFC8
+.secttions-text-4-5 {
+    position: relative;
+    color: black;
+    font-family: 'M PLUS 1p';
+    font-style: normal;
+    font-size: 17px;
+    text-align: left;
+    max-width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
+
+.secttions-text-5 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    color: black;
+    font-family: 'M PLUS 1p';
+    font-style: normal;
+    text-align: left;
+    max-width: 48%;
+    z-index: 4; 
+    font-weight: bold;
+}
+
+.secttions-text-5-5 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    color: black;
+    font-family: 'M PLUS 1p';
+    font-size: 17px;
+    font-style: normal;
+    text-align: left;
+    max-width: 48%;
+    z-index: 4; 
+   
+}
+
 
 /*paginas de todos los productos: 
 vocaloid, fuentes de sonido, cd de muestra y bibliotecas de efectos especiales*/
