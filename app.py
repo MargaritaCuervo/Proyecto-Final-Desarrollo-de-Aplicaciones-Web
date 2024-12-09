@@ -75,6 +75,13 @@ def politica_privacidad():
 def politica_uso():
     return render_template("politica_uso.html")
 
+@app.route('/contactanos')
+def contactanos():
+    return render_template("contactanos.html")
+
+@app.route('/preguntas')
+def faqs():
+    return render_template("preguntas.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
