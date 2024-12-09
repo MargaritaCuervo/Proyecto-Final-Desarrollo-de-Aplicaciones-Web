@@ -51,6 +51,8 @@
     <main class="container my-5">
         <h1 class="cart-header">Carrito de compras</h1>
 
+        <br><br>
+
         <div class="row">
             <div class="col-md-8">
                 <p><strong>Producto(s)</strong></p>
@@ -61,20 +63,22 @@
                     
                     <div>
                         <p><strong>{{ product[0] }}</strong></p>
-                        <div class="d-flex align-items-center">
-                            <button class="btn btn-outline-secondary btn-sm me-2">-</button>
-                            <input type="text" class="form-control form-control-sm text-center" value="1">
-                            <button class="btn btn-outline-secondary btn-sm ms-2">+</button>
-                        </div>
-                        <a href="{{ url_for('remove_from_cart', detail_id=product[2]) }}" class="btn-delete">Eliminar</a>
+                        
+                        <form action="{{ url_for('remove_from_cart', detail_id=product[2]) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="buy-button-miku2">Eliminar</button>
+                        </form>
+                        
 
                     </div>
                     <div class="ms-auto">
-                        <p>{{ product[1] }} MNX</p>
+                        <p>{{ product[1] }} MNX</p> <br><br>
                     </div>
+                   
                 </div>
                 {% endfor %}
             </div>
+
+            <br><br>
 
             <!-- Resumen -->
             <div class="col-md-4">
@@ -83,10 +87,11 @@
                 <hr>
                 <p class="text-end cart-footer">TOTAL</p>
                 <p class="text-end cart-footer">{{ order_total }} MNX</p>
-                <button class="btn btn-pago w-100 mt-3">Proceder al pago</button>
+                <button class="buy-button-superpack2">Proceder al pago</button>
             </div>
         </div>
     </main>
+    <br><br><br>
 
     <!-- Pie de página -->
     <footer class="bg-dark text-white p-3">

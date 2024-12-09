@@ -122,11 +122,11 @@ def add_to_cart():
     
     cursor = mysql.connection.cursor()
     try:
-        # Obtener el client_ID del usuario
+        # el cliente_ID
         cursor.execute('SELECT client_ID FROM ClientesLogins WHERE client_user = %s', [session['username']])
         user_id = cursor.fetchone()[0]
 
-        # Verificar si el usuario ya tiene un pedido abierto
+        # Si usuario ya tiene pedido
         cursor.execute('SELECT order_id FROM Pedidos WHERE client_ID = %s AND order_total = 0', [user_id])
         order = cursor.fetchone()
 
@@ -138,8 +138,21 @@ def add_to_cart():
         else:
             order_id = order[0]
 
-        # Insertar el producto en DetallesPedidos
+        # DetallesPedidos
         cursor.execute('INSERT INTO DetallesPedidos (product_ID, order_id) VALUES (%s, %s)', (product_id, order_id))
+        mysql.connection.commit()
+
+        # Recalcular el total 
+        cursor.execute('''
+            SELECT SUM(p.product_price) 
+            FROM Productos p
+            JOIN DetallesPedidos d ON p.product_ID = d.product_ID
+            WHERE d.order_id = %s
+        ''', [order_id])
+        order_total = cursor.fetchone()[0]
+
+        # Actualizar total
+        cursor.execute('UPDATE Pedidos SET order_total = %s WHERE order_id = %s', (order_total, order_id))
         mysql.connection.commit()
         cursor.close()
 
@@ -148,6 +161,7 @@ def add_to_cart():
         print(f'Error: {e}')
         cursor.close()
         return jsonify({'message': 'Hubo un problema al agregar el producto al carrito.'}), 500
+
 
 
 
@@ -186,10 +200,39 @@ def carrito():
 @app.route('/remove_from_cart/<int:detail_id>', methods=['POST'])
 def remove_from_cart(detail_id):
     cursor = mysql.connection.cursor()
-    cursor.execute('DELETE FROM DetallesPedidos WHERE detail_ID = %s', [detail_id])
-    mysql.connection.commit()
-    cursor.close()
+    try:
+        # Obtener el order_id del detalle a eliminar
+        cursor.execute('SELECT order_id FROM DetallesPedidos WHERE detail_ID = %s', [detail_id])
+        order_id = cursor.fetchone()[0]
+
+        # Eliminar el detalle del pedido
+        cursor.execute('DELETE FROM DetallesPedidos WHERE detail_ID = %s', [detail_id])
+        mysql.connection.commit()
+
+        # Recalcular el total del pedido
+        cursor.execute('''
+            SELECT SUM(p.product_price) 
+            FROM Productos p
+            JOIN DetallesPedidos d ON p.product_ID = d.product_ID
+            WHERE d.order_id = %s
+        ''', [order_id])
+        order_total = cursor.fetchone()[0]
+
+        # Manejar el caso donde no hay más productos en el pedido
+        if order_total is None:
+            order_total = 0
+
+        # Actualizar el total del pedido en la tabla Pedidos
+        cursor.execute('UPDATE Pedidos SET order_total = %s WHERE order_id = %s', (order_total, order_id))
+        mysql.connection.commit()
+
+        print(f'Producto con detail_ID {detail_id} eliminado del carrito. Total actualizado a {order_total}.')
+    except Exception as e:
+        print(f'Error al eliminar el producto del carrito: {e}')
+    finally:
+        cursor.close()
     return redirect(url_for('carrito'))
+
 
 
 
