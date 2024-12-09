@@ -719,3 +719,19 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+.btn-eliminar {
+    color: rgb(255, 1, 1);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-pago {
+    background-color: #8b0000;
+    color: white;
+    border: none;
+}
+
+.btn-pago:hover {
+    background-color: #a00000;
+}
+
