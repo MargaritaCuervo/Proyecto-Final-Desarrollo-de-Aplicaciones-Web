@@ -44,15 +44,14 @@ Proyecto-Final-Desarrollo-de-Aplicaciones-Web/
    git clone https://github.com/MargaritaCuervo/Proyecto-Final-Desarrollo-de-Aplicaciones-Web.git
    ```
 
-([GitHub][2])
-2\. Accede al directorio del proyecto:
+2. Accede al directorio del proyecto:
 
 ```bash
 cd Proyecto-Final-Desarrollo-de-Aplicaciones-Web
 ```
 
 
-3\. Crea y activa un entorno virtual:
+3. Crea y activa un entorno virtual:
 
 ```bash
 python -m venv venv
@@ -60,18 +59,18 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 ```
 
 
-4\. Instala las dependencias:
+4. Instala las dependencias:
 
 ```bash
 pip install -r requirements.txt
 ```
 
 
-5\. Configura la base de datos MySQL:
+5. Configura la base de datos MySQL:
 
 * Crea una base de datos llamada `crypton`.
 * Importa el archivo `Crypton.sql` para crear las tablas necesarias.
-* (Opcional) Importa `StoredProcedures.sql` para agregar procedimientos almacenados.
+* Importa `StoredProcedures.sql` para agregar procedimientos almacenados.
 
 6. Ejecuta la aplicación:
 
@@ -79,12 +78,8 @@ pip install -r requirements.txt
    python app.py
    ```
 
-([GitHub][2])
-7\. Abre tu navegador y visita `http://localhost:5000` para ver la aplicación en funcionamiento.
+7. Abre tu navegador y visita `http://localhost:5000` para ver la aplicación en funcionamiento.
 
-## 📸 Capturas de pantalla
-
-*Nota: Aquí puedes incluir imágenes del proyecto para mostrar su diseño y funcionalidad.*
 
 ## 👥 Autores
 
